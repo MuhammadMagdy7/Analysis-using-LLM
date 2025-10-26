@@ -1,0 +1,69 @@
+# News Analysis Data Pipeline Project
+
+This project is an end-to-end data pipeline designed to automate the process of collecting daily news from a Telegram channel, analyzing it, summarizing it, and presenting it interactively.
+
+## 🎯 Project Goal
+
+The primary objective is to build a fully automated system that:
+1.  Pulls data (news) from specific sources (like the Al Jazeera channel on Telegram).
+2.  Analyzes and classifies the news using Large Language Models (LLMs).
+3.  Effectively summarizes the daily news.
+4.  Displays this data and the summaries in an analytical dashboard.
+
+---
+
+## 🏗️ Architecture & Workflow
+
+The project follows a modern data engineering architecture to ensure the smooth flow and processing of data:
+
+1.  **Orchestration:**
+    * `Apache Airflow` is used to run the pipeline twice daily.
+
+2.  **Data Ingestion:**
+    * `Airflow` pulls new articles from the target Telegram channel (ajenews).
+
+3.  **Storage:**
+    * The extracted raw data is stored directly in `Google BigQuery` (Data Warehouse).
+
+4.  **AI Analysis & Summarization:**
+    * Large Language Model (LLM) APIs are called to perform the following:
+        * **News Classification:** By category, language level, and country.
+        * **News Summarization:** Generating accurate daily summaries.
+
+5.  **Data Transformation:**
+    * `dbt` is used to manage data transformations and ensure data quality within `Google BigQuery` after processing.
+
+6.  **Containerization:**
+    * `Docker` is used to containerize the project's services (like Airflow and dbt) to ensure a consistent operating environment.
+
+7.  **Data Serving & Presentation:**
+    * **Backend:** `FastAPI` (using Vibe Coding) is used to create a high-speed API that serves the final results.
+    * **Frontend:** `Next.js` (using Vibe Coding) is used to build the interactive dashboard.
+
+---
+
+## 💡 Features & Final Outputs
+
+* **Real-time Analytical Dashboard:** A user interface to display data and analytics.
+* **Aggregated News Analysis:** Providing insights into the total daily news.
+* **Fully Automated System:** The project runs independently after the initial setup.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Orchestration:** `Apache Airflow`
+* **Data Warehouse:** `Google BigQuery`
+* **Transformation:** `dbt`
+* **Backend API:** `FastAPI`
+* **Frontend:** `Next.js`
+* **AI / NLP:** `LLM APIs`
+* **Containerization:** `Docker`
+* **Data Source:** `Telegram`
+
+---
+
+## 🌟 Acknowledgments
+
+* This project utilized the excellent YouTube tutorials by Dr. **Ansam Yousry** for implementing `Airflow` and `dbt`.
+* `Vibe Coding` was used for building the `FastAPI` and `Next.js` components.
